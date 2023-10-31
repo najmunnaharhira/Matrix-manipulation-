@@ -1,0 +1,31 @@
+% Input matrix A
+rows_A = input("Enter the number of rows for matrix A: ");
+cols_A = input("Enter the number of columns for matrix A: ");
+A = input_matrix(rows_A, cols_A);
+
+% Input matrix B
+rows_B = input("Enter the number of rows for matrix B: ");
+cols_B = input("Enter the number of columns for matrix B: ");
+B = input_matrix(rows_B, cols_B);
+
+% Print the max value from matrix A
+max_A = max(max(A));
+fprintf("Max value in matrix A: %f\n", max_A);
+
+% Multiply matrices A and B, handle the case where multiplication is not possible
+if (cols_A == rows_B)
+    result_matrix = A * B;
+    fprintf("Result of A * B:\n");
+    disp(result_matrix);
+else
+    fprintf("Matrix multiplication is not possible. Number of columns in A must be equal to the number of rows in B.\n");
+end
+
+% Function to input a matrix from the command line
+function matrix = input_matrix(rows, cols)
+    printf("Enter %dx%d matrix:\n", rows, cols);
+    matrix = zeros(rows, cols);
+    for i = 1:rows
+        matrix(i, :) = input("");
+    end
+end
